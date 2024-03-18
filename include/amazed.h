@@ -27,7 +27,6 @@
 typedef struct cell {
     u_char state;
     char name[MAX_NAME_LENGTH];
-    size_t position[2];
     ssize_t move_to_end;
     _Bool *robots;
     size_t robots_nb;

@@ -12,7 +12,8 @@ void rec_get_move_to_end(cell_t *cell, int depth)
     cell->move_to_end = depth;
     depth++;
     for (int i = 0; cell->tunnels[i]; i++)
-        if (cell->tunnels[i]->move_to_end == -1)
+        if (cell->tunnels[i]->move_to_end == -1 ||
+            cell->tunnels[i]->move_to_end > depth)
             rec_get_move_to_end(cell->tunnels[i], depth);
 }
 
