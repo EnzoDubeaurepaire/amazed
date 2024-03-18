@@ -19,7 +19,7 @@ _Bool is_end(cell_t **cells)
 {
     cell_t *end = get_end_cell(cells);
 
-    for (int i = 0; i < end->robots_nb; i++)
+    for (int i = 0; (size_t)i < end->robots_nb; i++)
         if (end->robots[i] == 0)
             return 0;
     return 1;

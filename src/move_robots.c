@@ -37,38 +37,39 @@ static cell_t *get_robot_cell(cell_t **cells, size_t robot)
 }
 
 void move_robot_in_cell(cell_t *cell, robots_info_t *robots_info,
-    size_t robot)
+    size_t robot, _Bool *first)
 {
     cell_t *to_go;
 
     if (robots_info->moved_robots[robot] || cell->state == END || cell->moved
         == cells_len(cell->tunnels))
         return;
-    to_go = select_cell_to_go(cell, robots_info);
-    if (to_go)
+    to_go = select_cell_to_go(cell, robots_info, first);
+    if (to_go) {
+        first_move_write(first);
         move_robot(cell, to_go, robots_info, robot);
+    }
 }
 
 static void move_robot_in_cells(cell_t **cells, robots_info_t *robots_info,
-    size_t robot)
+    size_t robot, _Bool *first)
 {
     cell_t *cell = get_robot_cell(cells, robot);
 
     if (robots_info->moved_robots[robot])
         return;
-    move_robot_in_cell(cell, robots_info, robot);
+    move_robot_in_cell(cell, robots_info, robot, first);
 }
 
 void move_robots(cell_t **cells, robots_info_t *robots_info)
 {
     _Bool first_move = 1;
-    _Bool change = 0;
 
-    for (int i = 0; i < robots_info->robots_nb; i++)
+    for (int i = 0; (size_t)i < robots_info->robots_nb; i++)
         robots_info->moved_robots[i] = 0;
     for (int i = 0; cells[i]; i++)
         cells[i]->moved = 0;
-    for (int i = 0; i < robots_info->robots_nb; i++) {
-        move_robot_in_cells(cells, robots_info, i);
+    for (int i = 0; (size_t)i < robots_info->robots_nb; i++) {
+        move_robot_in_cells(cells, robots_info, i, &first_move);
     }
 }

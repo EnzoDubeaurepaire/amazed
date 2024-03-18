@@ -51,14 +51,15 @@ int cell_is_empty(cell_t *cell);
 /*
  * cell_selection.c
 */
-cell_t *select_cell_to_go(cell_t *actual_cell, robots_info_t *robots_info);
+cell_t *select_cell_to_go(cell_t *actual_cell, robots_info_t *robots_info,
+    _Bool *first);
 
 /*
  * move_robots.c
 */
 void move_robots(cell_t **cells, robots_info_t *robots_info);
 void move_robot_in_cell(cell_t *cell, robots_info_t *robots_info,
-    size_t robot);
+    size_t robot, _Bool *first);
 
 /*
  * check_end.c

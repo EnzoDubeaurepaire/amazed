@@ -17,7 +17,8 @@ SRC	=	src/main.c \
 
 OBJ	=	$(SRC:.c=.o)
 
-FLAGS	=	-Wextra -Wall -Werror
+CFLAGS	+=	-Wall -Wextra -Werror
+CFLAGS	+=	-Ofast -fno-builtin -flto -march=native
 
 NAME	=	amazed
 
@@ -25,7 +26,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C lib/
-	gcc -o $(NAME) $(OBJ) -Wextra -Werror -Wall -Llib -lmy -Ofast -fno-builtin -flto -march=native
+	gcc -o $(NAME) $(OBJ) -Llib -lmy
 
 tests-run:	$(OBJ)
 	echo "No tests"

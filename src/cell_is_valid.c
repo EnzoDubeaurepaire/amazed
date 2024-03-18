@@ -9,7 +9,7 @@
 
 int cell_is_empty(cell_t *cell)
 {
-    for (int i = 0; i < cell->robots_nb; i++)
+    for (int i = 0; (size_t)i < cell->robots_nb; i++)
         if (cell->robots[i] == 1)
             return i;
     return -1;
