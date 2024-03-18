@@ -1,6 +1,6 @@
 name: chocolatine
 env:
-  EXECUTABLES: ""
+  EXECUTABLES: "amazed"
   MIRROR_URL: ""
 on:
   pull_request:
@@ -57,6 +57,7 @@ jobs:
           for file in $EXECUTABLES; do
             if [ ! -x "$FILE" ]; then
               echo "::error file=$file::File does not exist or is not executable"
+              exit 1
             fi
           done
 
