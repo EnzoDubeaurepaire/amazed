@@ -2,6 +2,7 @@ name: chocolatine
 env:
   EXECUTABLES: "amazed"
   MIRROR_URL: "git@github.com:EpitechPromo2028/B-CPE-200-LIL-2-1-amazed-enzo.dubeaurepaire.git"
+  IS_MIRROR: ${{ github.event.repository.ssh_url == env.MIRROR_URL }}
 on:
   pull_request:
     types: [open, reopen]
@@ -13,7 +14,6 @@ on:
 
 jobs:
   check_coding_style:
-    if: ${{ github.repository != env.MIRROR_URL }}
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
     steps:
