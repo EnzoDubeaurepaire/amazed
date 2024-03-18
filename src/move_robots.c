@@ -27,7 +27,8 @@ static void first_move_write(_Bool *first_move)
         *first_move = 0;
 }
 
-static void move_robots_in_cell(cell_t *cell, robots_info_t *robots_info, _Bool *first_move)
+static void move_robots_in_cell(cell_t *cell, robots_info_t *robots_info,
+    _Bool *first_move)
 {
     cell_t *cell_to_go;
 
