@@ -51,7 +51,7 @@ jobs:
         timeout-minutes: 2
         run: make
       - name: make clean
-        run: make fclean
+        run: make clean
       - name: verify executables
         run: |
           echo "$EXECUTABLES" | tr ',' '\n' | while read -r file; do
