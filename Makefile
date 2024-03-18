@@ -26,7 +26,7 @@ $(NAME):	$(OBJ)
 	make -C lib/
 	gcc -o $(NAME) $(OBJ) -Wextra -Werror -Wall -Llib -lmy
 
-tests_run:	$(OBJ)
+tests-run:	$(OBJ)
 	echo "No tests"
 #	gcc -o unit_tests $(SRC) tests/test.c -lcriterion --coverage
 #	./unit_tests
