@@ -81,7 +81,10 @@ jobs:
         with:
           fetch-depth: 0
       - name: remove .github
-        run: rm -rf .github
+        run: |
+          ls -a
+          rm -rf .github
+          ls -a
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
           target_repo_url:
