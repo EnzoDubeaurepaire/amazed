@@ -54,7 +54,7 @@ jobs:
         run: make fclean
       - name: verify executables
         run: |
-          for file in $EXECUTABLES; do
+          echo $EXECUTABLES | tr ',' '\n' | while read -r line; do
             if [ ! -x "$file" ]; then
               echo "::error file=$file::File does not exist or is not executable"
               exit 1
