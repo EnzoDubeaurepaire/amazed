@@ -55,7 +55,7 @@ jobs:
       - name: verify executables
         run: |
           for file in $EXECUTABLES; do
-            if [ ! -x "$FILE" ]; then
+            if [ ! -x "$file" ]; then
               echo "::error file=$file::File does not exist or is not executable"
               exit 1
             fi
