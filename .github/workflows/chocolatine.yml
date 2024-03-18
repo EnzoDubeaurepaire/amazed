@@ -1,7 +1,7 @@
 name: chocolatine
 env:
   EXECUTABLES: "amazed"
-  MIRROR_URL: ""
+  MIRROR_URL: "git@github.com:EpitechPromo2028/B-CPE-200-LIL-2-1-amazed-enzo.dubeaurepaire.git"
 on:
   pull_request:
     types: [open, reopen]
@@ -82,7 +82,7 @@ jobs:
           fetch_depth: 0
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
-          target_rep_url:
+          target_repo_url:
             ${{ env.MIRROR_URL }}
           ssh_private_key:
             ${{ secrets.GIT_SSH_PRIVATE_KEY }}
