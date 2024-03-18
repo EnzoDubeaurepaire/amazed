@@ -1,11 +1,9 @@
 /*
 ** EPITECH PROJECT, 2024
-** amazed
+** amazed_mirror
 ** File description:
 ** main.c
 */
-
-#include "../include/amazed.h"
 
 int main(void)
 {

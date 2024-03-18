@@ -31,6 +31,7 @@ typedef struct cell {
     _Bool *robots;
     size_t robots_nb;
     struct cell **tunnels;
+    size_t moved;
 } cell_t;
 
 /*
@@ -44,18 +45,20 @@ typedef struct robots_info {
 /*
  * cell_is_valid.c
 */
-_Bool can_go_to_cell(cell_t *cell);
-_Bool cell_is_empty(cell_t *cell);
+int can_go_to_cell(cell_t *cell);
+int cell_is_empty(cell_t *cell);
 
 /*
  * cell_selection.c
 */
-cell_t *select_cell_to_go(cell_t *actual_cell);
+cell_t *select_cell_to_go(cell_t *actual_cell, robots_info_t *robots_info);
 
 /*
  * move_robots.c
 */
 void move_robots(cell_t **cells, robots_info_t *robots_info);
+void move_robot_in_cell(cell_t *cell, robots_info_t *robots_info,
+    size_t robot);
 
 /*
  * check_end.c
@@ -78,5 +81,10 @@ void free_cells(cell_t **cells);
  * get_move_to_end.c
 */
 void get_move_to_end(cell_t **cells);
+
+/*
+ * cells_len.c
+*/
+size_t cells_len(cell_t **cells);
 
 #endif //AMAZED_AMAZED_H

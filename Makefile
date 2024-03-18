@@ -13,6 +13,7 @@ SRC	=	src/main.c \
 		src/move_robots.c \
 		src/free_cells.c \
 		src/get_move_to_end.c \
+		src/cells_len.c \
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -24,7 +25,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C lib/
-	gcc -o $(NAME) $(OBJ) -Wextra -Werror -Wall -Llib -lmy
+	gcc -o $(NAME) $(OBJ) -Wextra -Werror -Wall -Llib -lmy -Ofast -fno-builtin -flto -march=native
 
 tests-run:	$(OBJ)
 	echo "No tests"
