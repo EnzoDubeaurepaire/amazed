@@ -2,6 +2,7 @@ name: chocolatine
 env:
   EXECUTABLES: "amazed"
   MIRROR_URL: "git@github.com:EpitechPromo2028/B-CPE-200-LIL-2-1-amazed-enzo.dubeaurepaire.git"
+  REPO_URL: ${{ github.repositoryUrl }}
 on:
   pull_request:
     types: [open, reopen]
@@ -14,17 +15,13 @@ on:
 jobs:
   check_mirror:
     runs-on: ubuntu-latest
-    env:
-      REPO: ${{ github.repositoryUrl }}
     outputs:
       is_mirror: ${{ steps.is_mirror.outputs.is_mirror }}
     steps:
       - name: Check if mirror repository
         id: is_mirror
         run: |
-          echo "$(basename $REPO)"
-          echo "$(basename $MIRROR_URL)"
-          if [[ "$(git config --get remote.origin.url)" == "$MIRROR_URL" ]]; then
+          if [[ "$(basename $REPO_URL)" == "$(basename MIRROR_URL)" ]]; then
             echo "mirror"
             echo "is_mirror=true" >> "$GITHUB_OUTPUT"; else
             echo "no mirror"
