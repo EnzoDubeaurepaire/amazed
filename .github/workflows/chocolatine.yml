@@ -15,7 +15,7 @@ jobs:
   check_mirror:
     runs-on: ubuntu-latest
     outputs:
-      is_mirror: ${{ step.is_mirror.outputs.is_mirror }}
+      is_mirror: ${{ steps.is_mirror.outputs.is_mirror }}
     steps:
       - name: Check if mirror repository
         id: is_mirror
