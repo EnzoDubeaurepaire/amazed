@@ -43,6 +43,7 @@ typedef struct robots_info {
     _Bool *moved_robots;
 } robots_info_t;
 
+
 /*
  * cell_is_valid.c
 */
@@ -93,5 +94,10 @@ size_t cells_len(cell_t **cells);
  * check_name_cell.c
 */
 cell_t *check_name_cell(cell_t **tab, char *name);
+
+/*
+ * init_cell_struct.c
+*/
+cell_t *init_cell(u_char state, char *name, size_t nb_robots);
 
 #endif //AMAZED_AMAZED_H
