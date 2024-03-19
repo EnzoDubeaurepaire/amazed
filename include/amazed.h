@@ -13,6 +13,7 @@
  * cell max name length
 */
     #define MAX_NAME_LENGTH 2048
+    #define MAX_FILE_LENGTH 4096
 
 /*
  * state values
@@ -87,5 +88,10 @@ void get_move_to_end(cell_t **cells);
  * cells_len.c
 */
 size_t cells_len(cell_t **cells);
+
+/*
+ * check_name_cell.c
+*/
+cell_t *check_name_cell(cell_t **tab, char *name);
 
 #endif //AMAZED_AMAZED_H
