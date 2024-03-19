@@ -20,7 +20,7 @@ jobs:
       - name: Check if mirror repository
         id: is_mirror
         run: |
-          if [ "${{ github.event.repository.full_name }}" = "$(basename $MIRROR_URL .git)" ]; then
+          if [[ "$(git config --get remote.origin.url)" == "$MIRROR_URL" ]]; then
             echo "mirror"
             echo "is_mirror=true" >> "$GITHUB_OUTPUT"; else
             echo "no mirror"
