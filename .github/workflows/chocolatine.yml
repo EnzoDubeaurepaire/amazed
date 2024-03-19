@@ -22,9 +22,9 @@ jobs:
         run: |
           if [ "${{ github.event.repository.full_name }}" = "$(basename $MIRROR_URL .git)" ]; then
             echo "mirror"
-            echo "true" >> "$GITHUB_OUTPUT"; else
+            echo "is_mirror=true" >> "$GITHUB_OUTPUT"; else
             echo "no mirror"
-            echo "false" >> "$GITHUB_OUTPUT"
+            echo "is_mirror=false" >> "$GITHUB_OUTPUT"
           fi
 
 
