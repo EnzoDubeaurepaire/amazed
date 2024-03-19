@@ -12,7 +12,19 @@ on:
       - 'ga-ignore**'
 
 jobs:
+  check_mirror:
+    runs-on: ubuntu-latest
+    outputs:
+      is_mirror: ${{ step.is_mirror.outputs.is_mirror }}
+    steps:
+      - name: Check if mirror repository
+        id: is_mirror
+        run: echo ::set-output name=is_mirror::$(if [ "${{ github.event.repository.full_name }}" = "$(basename $MIRROR_URL .git)" ]; then echo "true"; else echo "false"; fi)
+
+
   check_coding_style:
+    needs: check_mirror
+    if: ${{ needs.check_mirror.outputs.is_mirror == 'false' }}
     runs-on: ubuntu-latest
     container: ghcr.io/epitech/coding-style-checker:latest
     steps:
@@ -43,6 +55,7 @@ jobs:
 
   check_program_compilation:
     needs: check_coding_style
+    if: ${{ needs.check_mirror.outputs.is_mirror == 'false' }}
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest
     steps:
@@ -64,6 +77,7 @@ jobs:
 
   run_tests:
     needs: check_program_compilation
+    if: ${{ needs.check_mirror.outputs.is_mirror == 'false' }}
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker:latest
     steps:
@@ -74,7 +88,7 @@ jobs:
 
   push_to_mirror:
     needs: run_tests
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' && needs.check_mirror.outputs.is_mirror == 'false' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
