@@ -14,6 +14,7 @@ SRC	=	src/main.c \
 		src/free_cells.c \
 		src/get_move_to_end.c \
 		src/cells_len.c \
+		src/init_cell_struct.c
 
 OBJ	=	$(SRC:.c=.o)
 
