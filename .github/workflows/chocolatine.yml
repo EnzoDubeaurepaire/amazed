@@ -21,7 +21,9 @@ jobs:
       - name: Check if mirror repository
         id: is_mirror
         run: |
-          if [[ "$(basename $REPO_URL)" == "$(basename MIRROR_URL)" ]]; then
+          echo "$(basename $REPO_URL)"
+          echo "$(basename MIRROR_URL)"
+          if [ "$(basename $REPO_URL)" = "$(basename MIRROR_URL)" ]; then
             echo "mirror"
             echo "is_mirror=true" >> "$GITHUB_OUTPUT"; else
             echo "no mirror"
