@@ -14,13 +14,15 @@ on:
 jobs:
   check_mirror:
     runs-on: ubuntu-latest
+    env:
+      REPO: ${{ github.repository_url }}
     outputs:
       is_mirror: ${{ steps.is_mirror.outputs.is_mirror }}
     steps:
       - name: Check if mirror repository
         id: is_mirror
         run: |
-          echo "${{ github.repository_url }}"
+          echo "$REPO"
           echo "$MIRROR_URL"
           if [[ "$(git config --get remote.origin.url)" == "$MIRROR_URL" ]]; then
             echo "mirror"
