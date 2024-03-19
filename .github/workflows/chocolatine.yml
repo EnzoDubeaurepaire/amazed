@@ -15,7 +15,7 @@ jobs:
   check_mirror:
     runs-on: ubuntu-latest
     env:
-      REPO: ${{ github.repository_url }}
+      REPO: ${{ github.repositoryUrl }}
     outputs:
       is_mirror: ${{ steps.is_mirror.outputs.is_mirror }}
     steps:
