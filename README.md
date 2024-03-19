@@ -1,1 +1,3 @@
 # Amazed
+
+This is Amaze
