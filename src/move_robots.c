@@ -51,7 +51,7 @@ void move_robot_in_cell(cell_t *cell, robots_info_t *robots_info,
     cell_t *to_go;
 
     if (robots_info->moved_robots[robot / 64] & 1ul << (robot - robot / 64)
-        | cell->state == END || cell->moved == cells_len(cell->tunnels))
+        || cell->state == END || cell->moved == cells_len(cell->tunnels))
         return;
     to_go = select_cell_to_go(cell);
     if (to_go) {
