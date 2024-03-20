@@ -29,10 +29,13 @@ typedef struct cell {
     u_char state;
     char name[MAX_NAME_LENGTH];
     ssize_t move_to_end;
-    _Bool *robots;
+    u_int64_t *robots;
     size_t robots_nb;
     struct cell **tunnels;
     size_t moved;
+    _Bool has_robots;
+    size_t robots_present;
+    _Bool received;
 } cell_t;
 
 /*
@@ -40,7 +43,8 @@ typedef struct cell {
 */
 typedef struct robots_info {
     size_t robots_nb;
-    _Bool *moved_robots;
+    u_int64_t *moved_robots;
+    size_t robots_end;
 } robots_info_t;
 
 
@@ -53,8 +57,7 @@ int cell_is_empty(cell_t *cell);
 /*
  * cell_selection.c
 */
-cell_t *select_cell_to_go(cell_t *actual_cell, robots_info_t *robots_info,
-    _Bool *first);
+cell_t *select_cell_to_go(cell_t *actual_cell);
 
 /*
  * move_robots.c
@@ -99,5 +102,11 @@ cell_t *check_name_cell(cell_t **tab, char *name);
  * init_cell_struct.c
 */
 cell_t *init_cell(u_char state, char *name, size_t nb_robots);
+
+/*
+ * ceil.c
+*/
+int my_ceil(double nb);
+int my_floor(double nb);
 
 #endif //AMAZED_AMAZED_H

@@ -10,6 +10,7 @@
 void game_loop(cell_t **cells, robots_info_t *robots_info)
 {
     get_move_to_end(cells);
+    robots_info->robots_end = 0;
     while (1) {
         move_robots(cells, robots_info);
         write(1, "\n", 1);
