@@ -31,8 +31,7 @@ static int is_comment(char *str)
 
 char **check_stdin(void)
 {
-    char *tab[MAX_FILE_LENGTH] = {NULL};
-    char **all_lines;
+    char **tab = malloc(MAX_FILE_LENGTH * sizeof(char *));
     size_t len = 0;
     ssize_t read = 0;
     char *line = NULL;
@@ -46,9 +45,7 @@ char **check_stdin(void)
         }
     if (line)
         free(line);
-    all_lines = malloc(sizeof(char *) * (i + 1));
     for (int j = 0; tab[j]; j++)
-        all_lines[j] = delete_comment_end_line(tab[j]);
-    all_lines[i] = NULL;
-    return all_lines;
+        tab[j] = delete_comment_end_line(tab[j]);
+    return tab;
 }
