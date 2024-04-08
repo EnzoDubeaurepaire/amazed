@@ -17,6 +17,15 @@ SRC	=	src/main.c \
 		src/check_name_cell.c	\
 		src/init_cell_struct.c \
 		src/ceil.c \
+		src/fill_tab_stdin.c	\
+		src/create_stwa_for_each_line.c	\
+		src/parse_file.c	\
+		src/init_parsing_struct.c	\
+		src/free_parsing.c	\
+		src/parse_cell.c	\
+		src/parse_tunnel.c	\
+		src/get_names_tunnel.c	\
+		src/print_file.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -29,7 +38,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	make -C lib/
-	gcc -o $(NAME) $(OBJ) -Llib -lmy
+	gcc -g -o $(NAME) $(OBJ) -Llib -lmy
 
 tests-run:	$(OBJ)
 	echo "No tests"

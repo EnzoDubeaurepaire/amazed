@@ -109,4 +109,92 @@ cell_t *init_cell(u_char state, char *name, size_t nb_robots);
 int my_ceil(double nb);
 int my_floor(double nb);
 
+/*
+ * fill_tab_stdin.c
+*/
+char **check_stdin(void);
+
+/*
+ * create_stwa_for_each_line.c
+*/
+int get_len_stwa(char **file);
+char ***create_3d_array_for_parsing(char **file);
+
+
+/*
+ * struct cell parsing
+*/
+typedef struct cell_parsing_info {
+    size_t tunnel_nb;
+    char *name;
+    _Bool start;
+    _Bool end;
+    int coord_x;
+    int coord_y;
+    struct cell_parsing_info *next;
+} cell_parsing_info_t;
+
+/*
+ * tunnel name
+*/
+typedef struct tunnel_name {
+    char *name1;
+    char *name2;
+    struct tunnel_name *next;
+} tunnel_t;
+
+/*
+ * struct parsing
+*/
+typedef struct parsing_info {
+    size_t cell_nb;
+    size_t robot_nb;
+    _Bool start;
+    _Bool end;
+    cell_parsing_info_t *cell_list;
+    tunnel_t *tunnel_list;
+} parsing_info_t;
+
+/*
+ * init_parsing_struct.c
+*/
+parsing_info_t *init_struct_parsing(void);
+int add_cell(char **cell_info, parsing_info_t *parsing_info, int type);
+int add_tunnel(parsing_info_t *parsing_info, char *first_name,
+    char *second_name);
+
+/*
+ * free_parsing.c
+*/
+void free_stwa(char **stwa);
+
+/*
+ * parse_cell.c
+*/
+int parse_cell(parsing_info_t *parsing_info, char ***table_parsing,
+    int *index);
+
+/*
+ * parse_file.c
+*/
+int parse_file(parsing_info_t *parsing_info, char ***table_parsing);
+
+/*
+ * parse_tunnel.c
+*/
+int parse_tunnel(parsing_info_t *parsing_info, char ***table_parsing,
+    int *index);
+
+/*
+ * get_names_tunnel.c
+*/
+char *get_first_name(char const *tunnel_info);
+char *get_second_name(char const *tunnel_info);
+
+/*
+ * print_file.c
+*/
+void print_file(parsing_info_t *parsing_info);
+
+
 #endif //AMAZED_AMAZED_H
