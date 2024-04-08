@@ -13,7 +13,7 @@
  * cell max name length
 */
     #define MAX_NAME_LENGTH 2048
-    #define MAX_FILE_LENGTH 4096
+    #define MAX_FILE_LENGTH 262144
 
 /*
  * state values
