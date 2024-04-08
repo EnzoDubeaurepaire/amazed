@@ -10,7 +10,7 @@
 int parsing(char **table_file, char ****table_parsing,
     parsing_info_t **parsing_info)
 {
-    if (table_file == NULL)
+    if (table_file == NULL || table_file[0] == NULL)
         return 84;
     (*table_parsing) = create_3d_array_for_parsing(table_file);
     if ((*table_parsing) == NULL)
@@ -33,21 +33,30 @@ static robots_info_t *init_robots_info(parsing_info_t *parsing_info)
     return robots_info;
 }
 
+static int handling_error(parsing_info_t *parsing_info)
+{
+    if (parsing_info == NULL)
+        return 84;
+    if (parsing_info->start != 1 || parsing_info->end
+        != 1 || parsing_info->tunnel_list == NULL || parsing_info->cell_list
+        == NULL || parsing_info->robot_nb == 0) {
+        print_file(parsing_info);
+        return 84;
+    }
+    return 0;
+}
+
 int main(void)
 {
     char **table_file = check_stdin();
     char ***table_parsing;
-    parsing_info_t *parsing_info;
+    parsing_info_t *parsing_info = NULL;
     cell_t **cells;
     robots_info_t *robots_info;
 
     parsing(table_file, &table_parsing, &parsing_info);
-    if (parsing_info->start != 1 || parsing_info->end != 1 ||
-        parsing_info->tunnel_list == NULL || parsing_info->cell_list == NULL
-        || parsing_info->robot_nb == 0) {
-        print_file(parsing_info);
+    if (handling_error(parsing_info) == 84)
         return 84;
-    }
     print_file(parsing_info);
     cells = init_cells(parsing_info);
     init_tunnels(cells, parsing_info);
