@@ -196,5 +196,10 @@ char *get_second_name(char const *tunnel_info);
 */
 void print_file(parsing_info_t *parsing_info);
 
+/*
+ * init_cells.c
+*/
+cell_t **init_cells(parsing_info_t *parsing_info);
+void init_tunnels(cell_t **cells, parsing_info_t *parsing_info);
 
 #endif //AMAZED_AMAZED_H

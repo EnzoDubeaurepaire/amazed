@@ -25,7 +25,8 @@ SRC	=	src/main.c \
 		src/parse_cell.c	\
 		src/parse_tunnel.c	\
 		src/get_names_tunnel.c	\
-		src/print_file.c
+		src/print_file.c \
+		src/init_cells.c
 
 OBJ	=	$(SRC:.c=.o)
 
