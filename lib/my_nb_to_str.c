@@ -7,9 +7,9 @@
 
 #include "lib.h"
 
-static int len_nbr(int nb)
+static int len_nbr(long nb)
 {
-    int cnt = 0;
+    long cnt = 0;
 
     if (nb != 0){
         while (nb != 0) {
@@ -21,7 +21,7 @@ static int len_nbr(int nb)
         return 1;
 }
 
-static void rec(int nb, int *i, char **str)
+static void rec(long nb, long *i, char **str)
 {
     if (nb < 0){
         (*str)[0] = '-';
@@ -38,9 +38,9 @@ static void rec(int nb, int *i, char **str)
     }
 }
 
-char *my_nb_to_str(int nb)
+char *my_nb_to_str(long nb)
 {
-    int i = 0;
+    long i = 0;
     char *str;
 
     str = malloc(sizeof(char) * (len_nbr(nb) + 3));

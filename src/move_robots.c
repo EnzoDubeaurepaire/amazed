@@ -10,10 +10,13 @@
 static void move_robot(cell_t *source, cell_t *destination,
     robots_info_t *robots_info, size_t robot_id)
 {
-    write(1, "P", 1);
-    my_putnbr((long)robot_id + 1);
-    write(1, "-", 1);
-    write(1, destination->name, my_strlen(destination->name));
+    char *str_nb = my_nb_to_str((long)robot_id + 1);
+
+    write_to_buffer(robots_info, "P\0");
+    write_to_buffer(robots_info, str_nb);
+    free(str_nb);
+    write_to_buffer(robots_info, "-\0");
+    write_to_buffer(robots_info, destination->name);
     source->robots[robot_id / 64] ^= 1ul << (robot_id - robot_id / 64);
     destination->robots[robot_id / 64] |= 1ul << (robot_id - robot_id / 64);
     source->robots_present--;
@@ -28,10 +31,10 @@ static void move_robot(cell_t *source, cell_t *destination,
     source->moved++;
 }
 
-static void first_move_write(_Bool *first_move)
+static void first_move_write(_Bool *first_move, robots_info_t *robots_info)
 {
     if (*first_move == 0)
-        write(1, " ", 1);
+        write_to_buffer(robots_info, " \0");
     if (*first_move == 1)
         *first_move = 0;
 }
@@ -55,7 +58,7 @@ void move_robot_in_cell(cell_t *cell, robots_info_t *robots_info,
         return;
     to_go = select_cell_to_go(cell);
     if (to_go) {
-        first_move_write(first);
+        first_move_write(first, robots_info);
         move_robot(cell, to_go, robots_info, robot);
     }
 }

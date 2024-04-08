@@ -20,7 +20,7 @@ int my_getnbr(char const *str);
 void my_bzero(char *str, long size);
 int my_atoi(char *str);
 void my_putnbr(long nb);
-char *my_nb_to_str(int nb);
+char *my_nb_to_str(long nb);
 int my_str_islower(char const *str);
 int my_str_isnum(char const *str);
 int my_str_isupper(char const *str);

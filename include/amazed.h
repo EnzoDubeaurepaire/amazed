@@ -14,6 +14,7 @@
 */
     #define MAX_NAME_LENGTH 2048
     #define MAX_FILE_LENGTH 262144
+    #define BUFFER_SIZE 131072
 
 /*
  * state values
@@ -45,6 +46,8 @@ typedef struct robots_info {
     size_t robots_nb;
     u_int64_t *moved_robots;
     size_t robots_end;
+    char *buffer;
+    size_t buffer_size;
 } robots_info_t;
 
 
@@ -201,5 +204,10 @@ void print_file(parsing_info_t *parsing_info);
 */
 cell_t **init_cells(parsing_info_t *parsing_info);
 void init_tunnels(cell_t **cells, parsing_info_t *parsing_info);
+
+/*
+ * write_to_buffer
+*/
+void write_to_buffer(robots_info_t *robots_info, char *to_write);
 
 #endif //AMAZED_AMAZED_H
