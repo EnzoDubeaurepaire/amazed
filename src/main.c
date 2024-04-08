@@ -19,7 +19,7 @@ int parsing(char **table_file, char ****table_parsing,
     if ((*parsing_info) == NULL)
         return 84;
     if (parse_file((*parsing_info), (*table_parsing)) == 84)
-        return 84;
+        return 1;
     return 0;
 }
 
@@ -42,6 +42,12 @@ int main(void)
     robots_info_t *robots_info;
 
     parsing(table_file, &table_parsing, &parsing_info);
+    if (parsing_info->start != 1 || parsing_info->end != 1 ||
+        parsing_info->tunnel_list == NULL || parsing_info->cell_list == NULL
+        || parsing_info->robot_nb == 0) {
+        print_file(parsing_info);
+        return 84;
+    }
     print_file(parsing_info);
     cells = init_cells(parsing_info);
     init_tunnels(cells, parsing_info);
