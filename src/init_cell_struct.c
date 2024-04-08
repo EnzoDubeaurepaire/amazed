@@ -41,5 +41,6 @@ cell_t *init_cell(u_char state, char *name, size_t nb_robots)
     if (state == START)
         cell->robots_present = nb_robots;
     cell->robots_nb = nb_robots;
+    cell->tunnels = NULL;
     return cell;
 }
