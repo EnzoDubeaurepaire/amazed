@@ -78,7 +78,7 @@ cell_t *get_end_cell(cell_t **cells);
 /*
  * game_loop.c
 */
-void game_loop(cell_t **cells, robots_info_t *robots_info);
+int game_loop(cell_t **cells, robots_info_t *robots_info);
 
 /*
  * free_cells.c

@@ -5,8 +5,17 @@
 ** rr
 */
 
+/*!
+ * @file fill_tab_stdin.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ * delete the comment in the input line
+ * @param str is a input line
+ * @return the str without comment
+*/
 static char *delete_comment_end_line(char *str)
 {
     if (my_strcmp(str, "##start\n\0") == 0 || my_strcmp(str, "##end\n\0") == 0)
@@ -20,6 +29,11 @@ static char *delete_comment_end_line(char *str)
     return str;
 }
 
+/*!
+ * check if all the line is a comment
+ * @param str is a input line
+ * @return 1 if a comment or 0 if isn't
+*/
 static int is_comment(char *str)
 {
     if (str[0] == '#')
@@ -29,6 +43,10 @@ static int is_comment(char *str)
     return 0;
 }
 
+/*!
+ * collect the input values
+ * @return char ** with where each line is a line given as an input
+*/
 char **check_stdin(void)
 {
     char **tab = malloc(MAX_FILE_LENGTH * sizeof(char *));

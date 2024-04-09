@@ -5,8 +5,20 @@
 ** main.c
 */
 
+/*!
+ * @file main.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ * do the parsing of all the input
+ * @param table_file table of char * where each one is a char * given in input
+ * @param table_parsing the adresse to initialise the table of char ** for
+ * the parsing
+ * @param parsing_info main struct for the parsing
+ * @return return 0 if no error, 84 if major error or 1 if minor error
+*/
 int parsing(char **table_file, char ****table_parsing,
     parsing_info_t **parsing_info)
 {
@@ -23,6 +35,11 @@ int parsing(char **table_file, char ****table_parsing,
     return 0;
 }
 
+/*!
+ *
+ * @param parsing_info
+ * @return
+*/
 static robots_info_t *init_robots_info(parsing_info_t *parsing_info)
 {
     robots_info_t *robots_info = malloc(sizeof(robots_info_t));
@@ -33,6 +50,11 @@ static robots_info_t *init_robots_info(parsing_info_t *parsing_info)
     return robots_info;
 }
 
+/*!
+ * check the value of the parsing struct to see if error and print the file
+ * @param parsing_info is the structure for the parsing
+ * @return 84 if error or 0
+*/
 static int handling_error(parsing_info_t *parsing_info)
 {
     if (parsing_info == NULL)
@@ -46,6 +68,10 @@ static int handling_error(parsing_info_t *parsing_info)
     return 0;
 }
 
+/*!
+ * main function of the program execute everything
+ * @return either 0 or 84
+*/
 int main(void)
 {
     char **table_file = check_stdin();
@@ -61,6 +87,5 @@ int main(void)
     cells = init_cells(parsing_info);
     init_tunnels(cells, parsing_info);
     robots_info = init_robots_info(parsing_info);
-    game_loop(cells, robots_info);
-    return 0;
+    return game_loop(cells, robots_info);
 }

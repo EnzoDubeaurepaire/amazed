@@ -5,8 +5,17 @@
 ** create 3d array
 */
 
+/*!
+ * @file create_stwa_for_each_line.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ * get the lenght of a char **
+ * @param file is a char ** we want to measure
+ * @return the lenght
+*/
 int get_len_stwa(char **file)
 {
     int size = 0;
@@ -15,6 +24,11 @@ int get_len_stwa(char **file)
     return size;
 }
 
+/*!
+ * create a table of char **needed for the parsing
+ * @param table of input lines
+ * @return the parsing table or Null if error
+*/
 char ***create_3d_array_for_parsing(char **file)
 {
     int size = get_len_stwa(file);

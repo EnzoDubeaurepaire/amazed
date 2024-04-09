@@ -5,8 +5,17 @@
 ** cells_len.c
 */
 
+/*!
+ * @file cells_len.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ *
+ * @param cells
+ * @return
+*/
 size_t cells_len(cell_t **cells)
 {
     int i = 0;

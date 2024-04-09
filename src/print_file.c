@@ -5,8 +5,16 @@
 ** print_file.c
 */
 
+/*!
+ * @file print_file.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ *
+ * @param parsing_info
+*/
 void print_tunnels(parsing_info_t *parsing_info)
 {
     write(1, "#tunnels\n", 9);
@@ -19,15 +27,19 @@ void print_tunnels(parsing_info_t *parsing_info)
     }
 }
 
+/*!
+ *
+ * @param parsing_info
+*/
 void print_cells(parsing_info_t *parsing_info)
 {
     write(1, "#rooms\n", 7);
     for (cell_parsing_info_t *cell = parsing_info->cell_list; cell != NULL;
         cell = cell->next) {
         if (cell->start == 1)
-            write(1, "##start\n", 9);
+            write(1, "##start\n", 8);
         if (cell->end == 1)
-            write(1, "##end\n", 7);
+            write(1, "##end\n", 6);
         write(1, cell->name, my_strlen(cell->name));
         write(1, " ", 1);
         my_putnbr(cell->coord_x);
@@ -37,6 +49,10 @@ void print_cells(parsing_info_t *parsing_info)
     }
 }
 
+/*!
+ *
+ * @param parsing_info
+*/
 void print_file(parsing_info_t *parsing_info)
 {
     write(1, "#number_of_robots\n", 18);
@@ -44,5 +60,5 @@ void print_file(parsing_info_t *parsing_info)
     write(1, "\n", 1);
     print_cells(parsing_info);
     print_tunnels(parsing_info);
-    write(1, "#moves\n", 8);
+    write(1, "#moves\n", 7);
 }

@@ -5,8 +5,17 @@
 ** init_cells.c
 */
 
+/*!
+ * @file init_cells.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ *
+ * @param cell_list
+ * @return
+*/
 static size_t count_cells(cell_parsing_info_t *cell_list)
 {
     size_t nb = 0;
@@ -16,6 +25,11 @@ static size_t count_cells(cell_parsing_info_t *cell_list)
     return nb;
 }
 
+/*!
+ *
+ * @param parsing_info
+ * @return
+*/
 cell_t **init_cells(parsing_info_t *parsing_info)
 {
     size_t cell_nb = count_cells(parsing_info->cell_list);
@@ -32,6 +46,12 @@ cell_t **init_cells(parsing_info_t *parsing_info)
     return cells;
 }
 
+/*!
+ *
+ * @param name
+ * @param tunnels
+ * @return
+*/
 static size_t count_tunnels_in_cell(char *name, tunnel_t *tunnels)
 {
     size_t nb = 0;
@@ -44,6 +64,12 @@ static size_t count_tunnels_in_cell(char *name, tunnel_t *tunnels)
     return nb;
 }
 
+/*!
+ *
+ * @param name
+ * @param cells
+ * @return
+*/
 static cell_t *get_cell_from_name(char *name, cell_t **cells)
 {
     for (int i = 0; cells[i]; i++)
@@ -52,6 +78,13 @@ static cell_t *get_cell_from_name(char *name, cell_t **cells)
     return NULL;
 }
 
+/*!
+ *
+ * @param name
+ * @param cells
+ * @param tunnels
+ * @return
+*/
 static cell_t **get_tunnels(char *name, cell_t **cells, tunnel_t *tunnels)
 {
     size_t tunnel_in_cell = count_tunnels_in_cell(name, tunnels);
@@ -73,6 +106,11 @@ static cell_t **get_tunnels(char *name, cell_t **cells, tunnel_t *tunnels)
     return tunnels_list;
 }
 
+/*!
+ *
+ * @param cells
+ * @param parsing_info
+*/
 void init_tunnels(cell_t **cells, parsing_info_t *parsing_info)
 {
     for (int i = 0; cells[i]; i++)
