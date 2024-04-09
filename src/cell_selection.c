@@ -5,8 +5,17 @@
 ** cell_selection.c
 */
 
+/*!
+ * @file cell_selection.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ *
+ * @param actual_cell
+ * @return
+*/
 cell_t *select_cell_to_go(cell_t *actual_cell)
 {
     cell_t *chosen_cell = actual_cell;

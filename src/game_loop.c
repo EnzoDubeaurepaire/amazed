@@ -5,8 +5,17 @@
 ** game_loop.c
 */
 
+/*!
+ * @file game_loop.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ *
+ * @param robots_info
+ * @param to_write
+*/
 void write_to_buffer(robots_info_t *robots_info, char *to_write)
 {
     size_t len = my_strlen(to_write);
@@ -19,6 +28,11 @@ void write_to_buffer(robots_info_t *robots_info, char *to_write)
     robots_info->buffer_size += len;
 }
 
+/*!
+ *
+ * @param cells
+ * @return
+*/
 static cell_t *get_start_cell(cell_t **cells)
 {
     for (int i = 0; cells[i]; i++) {
@@ -28,6 +42,11 @@ static cell_t *get_start_cell(cell_t **cells)
     return NULL;
 }
 
+/*!
+ *
+ * @param robots_info
+ * @param end
+*/
 static void move_all_robots(robots_info_t *robots_info, cell_t *end)
 {
     char *str_nb;
@@ -45,18 +64,23 @@ static void move_all_robots(robots_info_t *robots_info, cell_t *end)
     write_to_buffer(robots_info, "\n\0");
 }
 
-void game_loop(cell_t **cells, robots_info_t *robots_info)
+/*!
+ *
+ * @param cells
+ * @param robots_info
+*/
+int game_loop(cell_t **cells, robots_info_t *robots_info)
 {
     get_move_to_end(cells);
     robots_info->robots_end = 0;
     robots_info->buffer = malloc(BUFFER_SIZE);
     if (get_start_cell(cells)->move_to_end == -1)
-        return;
+        return 84;
     if (get_start_cell(cells)->move_to_end == 1) {
         move_all_robots(robots_info, get_end_cell(cells));
         write(1, robots_info->buffer, robots_info->buffer_size);
         free(robots_info->buffer);
-        return;
+        return 0;
     }
     while (1) {
         move_robots(cells, robots_info);
@@ -64,7 +88,7 @@ void game_loop(cell_t **cells, robots_info_t *robots_info)
         if (is_end(cells)) {
             write(1, robots_info->buffer, robots_info->buffer_size);
             free(robots_info->buffer);
-            return;
+            return 0;
         }
     }
 }

@@ -5,6 +5,15 @@
 ** ceil.c
 */
 
+/*!
+ * @file ceil.c
+*/
+
+/*!
+ *
+ * @param nb
+ * @return
+*/
 int my_ceil(double nb)
 {
     if ((int)nb != nb)
@@ -12,6 +21,11 @@ int my_ceil(double nb)
     return (int)nb;
 }
 
+/*!
+ *
+ * @param nb
+ * @return
+ */
 int my_floor(double nb)
 {
     return (int)nb;

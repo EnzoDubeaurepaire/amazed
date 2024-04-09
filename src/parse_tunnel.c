@@ -5,8 +5,18 @@
 ** parse_tunnel.c
 */
 
+/*!
+ * @file parse_tunnel.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ * check in cell list if the name of the tunnel are correct
+ * @param parsing_info: parsing structure
+ * @param name: name of the cell
+ * @return 0 or 84
+*/
 static int check_in_cell_list(parsing_info_t *parsing_info, char const *name)
 {
     cell_parsing_info_t *cell = parsing_info->cell_list;
@@ -20,6 +30,14 @@ static int check_in_cell_list(parsing_info_t *parsing_info, char const *name)
     return 84;
 }
 
+/*!
+ * call the function to check the names cell and add the tunnel to the list
+ * in the structure parsing
+ * @param parsing_info: parsing structure
+ * @param first_tunnel: name of the first cell
+ * @param second_tunnel: name of the second cell
+ * @return 0 or 84
+*/
 static int check_if_name_exist(parsing_info_t *parsing_info,
     char *first_tunnel, char *second_tunnel)
 {
@@ -31,6 +49,12 @@ static int check_if_name_exist(parsing_info_t *parsing_info,
     return 0;
 }
 
+/*!
+ * get the name of the
+ * @param parsing_info
+ * @param tunnel_info
+ * @return
+*/
 static int check_if_valid_tunnel(parsing_info_t *parsing_info,
     char const *tunnel_info)
 {
@@ -52,6 +76,13 @@ static int check_if_valid_tunnel(parsing_info_t *parsing_info,
     return 0;
 }
 
+/*!
+ *
+ * @param parsing_info
+ * @param table_parsing
+ * @param index
+ * @return
+*/
 int parse_tunnel(parsing_info_t *parsing_info, char ***table_parsing,
     int *index)
 {

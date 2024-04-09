@@ -5,8 +5,19 @@
 ** move_robots.c
 */
 
+/*!
+ * @file move_robots.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ *
+ * @param source
+ * @param destination
+ * @param robots_info
+ * @param robot_id
+*/
 static void move_robot(cell_t *source, cell_t *destination,
     robots_info_t *robots_info, size_t robot_id)
 {
@@ -31,6 +42,11 @@ static void move_robot(cell_t *source, cell_t *destination,
     source->moved++;
 }
 
+/*!
+ *
+ * @param first_move
+ * @param robots_info
+*/
 static void first_move_write(_Bool *first_move, robots_info_t *robots_info)
 {
     if (*first_move == 0)
@@ -39,6 +55,12 @@ static void first_move_write(_Bool *first_move, robots_info_t *robots_info)
         *first_move = 0;
 }
 
+/*!
+ *
+ * @param cells
+ * @param robot
+ * @return
+*/
 static cell_t *get_robot_cell(cell_t **cells, size_t robot)
 {
     for (int i = 0; cells[i]; i++) {
@@ -48,6 +70,13 @@ static cell_t *get_robot_cell(cell_t **cells, size_t robot)
     return NULL;
 }
 
+/*!
+ *
+ * @param cell
+ * @param robots_info
+ * @param robot
+ * @param first
+*/
 void move_robot_in_cell(cell_t *cell, robots_info_t *robots_info,
     size_t robot, _Bool *first)
 {
@@ -63,6 +92,13 @@ void move_robot_in_cell(cell_t *cell, robots_info_t *robots_info,
     }
 }
 
+/*!
+ *
+ * @param cells
+ * @param robots_info
+ * @param robot
+ * @param first
+*/
 static void move_robot_in_cells(cell_t **cells, robots_info_t *robots_info,
     size_t robot, _Bool *first)
 {
@@ -74,6 +110,11 @@ static void move_robot_in_cells(cell_t **cells, robots_info_t *robots_info,
     move_robot_in_cell(cell, robots_info, robot, first);
 }
 
+/*!
+ *
+ * @param cells
+ * @return
+*/
 static _Bool no_moves(cell_t **cells)
 {
     for (int i = 0; cells[i]; i++)
@@ -83,6 +124,11 @@ static _Bool no_moves(cell_t **cells)
     return 1;
 }
 
+/*!
+ *
+ * @param cells
+ * @param robots_info
+*/
 void move_robots(cell_t **cells, robots_info_t *robots_info)
 {
     _Bool first_move = 1;

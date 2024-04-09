@@ -5,8 +5,18 @@
 ** get_names_tunnel
 */
 
+/*!
+ * @file get_names_tunnel.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ * take a str like this ("exemple1-exemple2") as an argument and get the part
+ * before the '-' character
+ * @param tunnel_info is a string corresponding to a tunnel
+ * @return the name a char ** if no error and NULL if error
+*/
 char *get_first_name(char const *tunnel_info)
 {
     char *name;
@@ -26,6 +36,12 @@ char *get_first_name(char const *tunnel_info)
     return name;
 }
 
+/*!
+ * take a str like this ("exemple1-exemple2") as an argument and get the part
+ * after the '-' character
+ * @param tunnel_info is a string corresponding to a tunnel
+ * @return the name a char ** if no error and NULL if error
+*/
 char *get_second_name(char const *tunnel_info)
 {
     char *name;

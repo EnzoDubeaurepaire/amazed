@@ -5,8 +5,19 @@
 ** will init the cell struct
 */
 
+/*!
+ * @file game_loop.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ *
+ * @param cell
+ * @param nb_robots
+ * @param state
+ * @return
+*/
 static int init_bool(cell_t *cell, size_t nb_robots, u_char state)
 {
     cell->robots = malloc(sizeof(u_int64_t) * my_ceil((double)nb_robots
@@ -22,6 +33,13 @@ static int init_bool(cell_t *cell, size_t nb_robots, u_char state)
     return 0;
 }
 
+/*!
+ * initialise a cell_t structure
+ * @param state is an u_char corresponding to the state of the cell
+ * @param name is a string which is the name of the cell
+ * @param nb_robots is an int corresponding to the number of robots
+ * @return a cell strut or NULL if malloc error occur
+*/
 cell_t *init_cell(u_char state, char *name, size_t nb_robots)
 {
     cell_t *cell = malloc(sizeof(cell_t));

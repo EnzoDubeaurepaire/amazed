@@ -5,8 +5,17 @@
 ** get_move_to_end.c
 */
 
+/*!
+ * @file get_move_end.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ *
+ * @param cell
+ * @param depth
+*/
 void rec_get_move_to_end(cell_t *cell, int depth)
 {
     cell->move_to_end = depth;
@@ -17,6 +26,10 @@ void rec_get_move_to_end(cell_t *cell, int depth)
             rec_get_move_to_end(cell->tunnels[i], depth);
 }
 
+/*!
+ *
+ * @param cells
+*/
 void get_move_to_end(cell_t **cells)
 {
     cell_t *end_cell = get_end_cell(cells);

@@ -5,8 +5,16 @@
 ** init_parsing_struct.c
 */
 
+/*!
+ * @file init_parsing_struct.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ * initialise the main struct for the parsing with data equal to 0
+ * @return the struct or NULL if malloc error
+*/
 parsing_info_t *init_struct_parsing(void)
 {
     parsing_info_t *init_struct = malloc(sizeof(parsing_info_t));
@@ -22,6 +30,14 @@ parsing_info_t *init_struct_parsing(void)
     return init_struct;
 }
 
+/*!
+ * add a new cell struct a the end of the cell linked list in the
+ * struct parsing_info
+ * @param cell_info is a char ** with the data needed to initialise the node
+ * @param parsing_info is the main struct for the parsing
+ * @param type is the type of cell either 0, 1 or 2
+ * @return 0 if no error or 84;
+*/
 int add_cell(char **cell_info, parsing_info_t *parsing_info, int type)
 {
     cell_parsing_info_t *new = malloc(sizeof(cell_parsing_info_t));
@@ -46,6 +62,14 @@ int add_cell(char **cell_info, parsing_info_t *parsing_info, int type)
     return 0;
 }
 
+/*!
+ * add a new cell struct a the end of the cell linked list in the
+ * struct parsing_info
+ * @param parsing_info is the main struct for the parsing
+ * @param first_name is the name of the first cell of the tunnel
+ * @param second_name is the name of the second cell of the tunnel
+ * @return 0 if no error or 84
+*/
 int add_tunnel(parsing_info_t *parsing_info, char *first_name,
     char *second_name)
 {

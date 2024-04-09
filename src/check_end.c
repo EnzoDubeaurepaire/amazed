@@ -5,8 +5,17 @@
 ** check_end.c
 */
 
+/*!
+ * @file check_end.c
+*/
+
 #include "../include/amazed.h"
 
+/*!
+ *
+ * @param cells
+ * @return
+*/
 cell_t *get_end_cell(cell_t **cells)
 {
     for (int i = 0; cells[i]; i++)
@@ -15,6 +24,11 @@ cell_t *get_end_cell(cell_t **cells)
     return NULL;
 }
 
+/*!
+ *
+ * @param cells
+ * @return
+*/
 _Bool is_end(cell_t **cells)
 {
     cell_t *end = get_end_cell(cells);
