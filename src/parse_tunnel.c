@@ -50,9 +50,9 @@ static int check_if_name_exist(parsing_info_t *parsing_info,
 }
 
 /*!
- * get the name of the
- * @param parsing_info
- * @param tunnel_info
+ * get the name of the of cell in the tunnel
+ * @param parsing_info: parsing structure
+ * @param tunnel_info: line containg the tunnel data
  * @return
 */
 static int check_if_valid_tunnel(parsing_info_t *parsing_info,
@@ -77,11 +77,11 @@ static int check_if_valid_tunnel(parsing_info_t *parsing_info,
 }
 
 /*!
- *
- * @param parsing_info
- * @param table_parsing
- * @param index
- * @return
+ * do the parsing of the tunnel
+ * @param parsing_info: parsing structure
+ * @param table_parsing: table containing the lines input
+ * @param index: address of the index
+ * @return 0 or 84
 */
 int parse_tunnel(parsing_info_t *parsing_info, char ***table_parsing,
     int *index)

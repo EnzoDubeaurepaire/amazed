@@ -12,8 +12,8 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param parsing_info
+ * display the tunnels
+ * @param parsing_info: parsing structure
 */
 void print_tunnels(parsing_info_t *parsing_info)
 {
@@ -28,8 +28,8 @@ void print_tunnels(parsing_info_t *parsing_info)
 }
 
 /*!
- *
- * @param parsing_info
+ * display the cells
+ * @param parsing_info: parsing structure
 */
 void print_cells(parsing_info_t *parsing_info)
 {
@@ -50,8 +50,8 @@ void print_cells(parsing_info_t *parsing_info)
 }
 
 /*!
- *
- * @param parsing_info
+ * principal display
+ * @param parsing_info: parsing structure
 */
 void print_file(parsing_info_t *parsing_info)
 {
