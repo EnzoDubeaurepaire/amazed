@@ -12,9 +12,9 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param cells
- * @return
+ * get the nbr of cell structure in the linked list
+ * @param cells: table of cell_t
+ * @return the len
 */
 size_t cells_len(cell_t **cells)
 {

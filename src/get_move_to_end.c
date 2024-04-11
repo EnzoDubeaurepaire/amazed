@@ -12,9 +12,9 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param cell
- * @param depth
+ * get the depth of the cell to reach the end cell
+ * @param cell: address of the end cell
+ * @param depth: depth of the actual cell until the end cell
 */
 void rec_get_move_to_end(cell_t *cell, int depth)
 {
@@ -27,8 +27,8 @@ void rec_get_move_to_end(cell_t *cell, int depth)
 }
 
 /*!
- *
- * @param cells
+ * get all the move until the end for all the cell
+ * @param cells: table of cell structure
 */
 void get_move_to_end(cell_t **cells)
 {

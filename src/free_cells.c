@@ -12,8 +12,8 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param robots_info
+ * free a cell structure
+ * @param robots_info: a cell structure
 */
 void free_robots_info(robots_info_t *robots_info)
 {
@@ -22,8 +22,8 @@ void free_robots_info(robots_info_t *robots_info)
 }
 
 /*!
- *
- * @param cells
+ * free the table of cell structure
+ * @param cells: table of cell structure
 */
 void free_cells(cell_t **cells)
 {

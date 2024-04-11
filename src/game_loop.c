@@ -12,9 +12,9 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param robots_info
- * @param to_write
+ * put in a buffer the moves to write
+ * @param robots_info: structure with robots info
+ * @param to_write: the string to stock
 */
 void write_to_buffer(robots_info_t *robots_info, char *to_write)
 {
@@ -29,9 +29,9 @@ void write_to_buffer(robots_info_t *robots_info, char *to_write)
 }
 
 /*!
- *
- * @param cells
- * @return
+ * get the address of the start cell
+ * @param cells: table of cell structure
+ * @return either the address if exist or NULL if not
 */
 static cell_t *get_start_cell(cell_t **cells)
 {
@@ -43,9 +43,9 @@ static cell_t *get_start_cell(cell_t **cells)
 }
 
 /*!
- *
- * @param robots_info
- * @param end
+ * function which build the buffer to write
+ * @param robots_info: structure with robots info
+ * @param end: the cell structure which represent the end
 */
 static void move_all_robots(robots_info_t *robots_info, cell_t *end)
 {
@@ -65,9 +65,9 @@ static void move_all_robots(robots_info_t *robots_info, cell_t *end)
 }
 
 /*!
- *
- * @param cells
- * @param robots_info
+ * main loop which do the algo to move the robots
+ * @param cells: table of cell structure
+ * @param robots_info: structure with robots info
 */
 int game_loop(cell_t **cells, robots_info_t *robots_info)
 {

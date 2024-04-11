@@ -12,9 +12,9 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param cell
- * @return
+ * check if the cell contains robots
+ * @param cell: a cell structure
+ * @return -1 if empty or the index of the robot in the list
 */
 int cell_is_empty(cell_t *cell)
 {
@@ -25,9 +25,9 @@ int cell_is_empty(cell_t *cell)
 }
 
 /*!
- *
- * @param cell
- * @return
+ * check if the robot can go in the cell
+ * @param cell: a cell structure
+ * @return 1 if it can or 0 if it can't
 */
 int can_go_to_cell(cell_t *cell)
 {

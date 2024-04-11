@@ -12,9 +12,9 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param cell_list
- * @return
+ * count the number of cell there is in the linked list cell_parsing_info_t
+ * @param cell_list:linked_list
+ * @return the nbr of cell
 */
 static size_t count_cells(cell_parsing_info_t *cell_list)
 {
@@ -26,9 +26,10 @@ static size_t count_cells(cell_parsing_info_t *cell_list)
 }
 
 /*!
- *
- * @param parsing_info
- * @return
+ * init the table of cell structure for the algo
+ * @param parsing_info: structure which as been fill with all the information
+ * during the parsing
+ * @return the table of cell struct
 */
 cell_t **init_cells(parsing_info_t *parsing_info)
 {
@@ -47,10 +48,10 @@ cell_t **init_cells(parsing_info_t *parsing_info)
 }
 
 /*!
- *
- * @param name
- * @param tunnels
- * @return
+ * count the number of tunnel will be connected to the cell
+ * @param name: name of the cell
+ * @param tunnels: linked_list of tunnel
+ * @return nbr of tunnel
 */
 static size_t count_tunnels_in_cell(char *name, tunnel_t *tunnels)
 {
@@ -65,10 +66,10 @@ static size_t count_tunnels_in_cell(char *name, tunnel_t *tunnels)
 }
 
 /*!
- *
- * @param name
- * @param cells
- * @return
+ * get the address of the cell thanks to its name
+ * @param name: name of the cell
+ * @param cells: table of cell structure
+ * @return either the address of the cell of NULL of it doesn't exist
 */
 static cell_t *get_cell_from_name(char *name, cell_t **cells)
 {
@@ -79,11 +80,11 @@ static cell_t *get_cell_from_name(char *name, cell_t **cells)
 }
 
 /*!
- *
- * @param name
- * @param cells
- * @param tunnels
- * @return
+ * init the table of tunnel one cell of the table
+ * @param name: name of the cell
+ * @param cells: table of cell structure
+ * @param tunnels: linked list of tunnel
+ * @return the table of tunnel
 */
 static cell_t **get_tunnels(char *name, cell_t **cells, tunnel_t *tunnels)
 {
@@ -107,9 +108,10 @@ static cell_t **get_tunnels(char *name, cell_t **cells, tunnel_t *tunnels)
 }
 
 /*!
- *
- * @param cells
- * @param parsing_info
+ * init the tunnels for each cell of the table
+ * @param cells: table of cell structure
+ * @param parsing_info: structure which as been filled with the datas during
+ * the parsing
 */
 void init_tunnels(cell_t **cells, parsing_info_t *parsing_info)
 {

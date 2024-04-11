@@ -12,11 +12,11 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param source
- * @param destination
- * @param robots_info
- * @param robot_id
+ * display the move of the robots
+ * @param source: cell where is the robot
+ * @param destination: cell where the robot have to go
+ * @param robots_info: structure with robots info
+ * @param robot_id: id of the robot in the list
 */
 static void move_robot(cell_t *source, cell_t *destination,
     robots_info_t *robots_info, size_t robot_id)
@@ -43,9 +43,9 @@ static void move_robot(cell_t *source, cell_t *destination,
 }
 
 /*!
- *
- * @param first_move
- * @param robots_info
+ * check how to display depending on the move number
+ * @param first_move: bool to see if it's the first move
+ * @param robots_info: structure with the robots info
 */
 static void first_move_write(_Bool *first_move, robots_info_t *robots_info)
 {
@@ -56,9 +56,9 @@ static void first_move_write(_Bool *first_move, robots_info_t *robots_info)
 }
 
 /*!
- *
- * @param cells
- * @param robot
+ * get the number of a robot and return the address of the cell
+ * @param cells: table of cell structure
+ * @param robot: number of robots
  * @return
 */
 static cell_t *get_robot_cell(cell_t **cells, size_t robot)
@@ -71,11 +71,11 @@ static cell_t *get_robot_cell(cell_t **cells, size_t robot)
 }
 
 /*!
- *
- * @param cell
- * @param robots_info
- * @param robot
- * @param first
+ * check the robot in the cell to move it
+ * @param cell: address of the cell to be check
+ * @param robots_info: structure with robots info
+ * @param robot: number of robots
+ * @param first: boolean to check the first move
 */
 void move_robot_in_cell(cell_t *cell, robots_info_t *robots_info,
     size_t robot, _Bool *first)
@@ -93,11 +93,11 @@ void move_robot_in_cell(cell_t *cell, robots_info_t *robots_info,
 }
 
 /*!
- *
- * @param cells
- * @param robots_info
- * @param robot
- * @param first
+ * check robot in cells and move them
+ * @param cells: table of cell structure
+ * @param robots_info: structure with robots info
+ * @param robot: number of robot
+ * @param first: boolean to check the first move
 */
 static void move_robot_in_cells(cell_t **cells, robots_info_t *robots_info,
     size_t robot, _Bool *first)
@@ -111,9 +111,9 @@ static void move_robot_in_cells(cell_t **cells, robots_info_t *robots_info,
 }
 
 /*!
- *
- * @param cells
- * @return
+ * check if there is no more available move
+ * @param cells: table of cell structure
+ * @return either 1 or 0
 */
 static _Bool no_moves(cell_t **cells)
 {
@@ -125,9 +125,9 @@ static _Bool no_moves(cell_t **cells)
 }
 
 /*!
- *
- * @param cells
- * @param robots_info
+ * moves the robots in the labyrinth
+ * @param cells: table of cell structure which represent the rooms of the laby
+ * @param robots_info: structure with all the robots info
 */
 void move_robots(cell_t **cells, robots_info_t *robots_info)
 {

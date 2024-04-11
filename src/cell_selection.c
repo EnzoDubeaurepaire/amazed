@@ -12,9 +12,10 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param actual_cell
- * @return
+ * select in which cell the robot will go
+ * @param actual_cell: cell structure
+ * @return NULL if there is no available space or the address of the cell if
+ * it can
 */
 cell_t *select_cell_to_go(cell_t *actual_cell)
 {

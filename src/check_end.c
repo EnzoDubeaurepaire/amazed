@@ -12,9 +12,9 @@
 #include "../include/amazed.h"
 
 /*!
- *
- * @param cells
- * @return
+ * get the address of the end cell
+ * @param cells: table of cell
+ * @return either the address if exist or NULL if doesn't
 */
 cell_t *get_end_cell(cell_t **cells)
 {
@@ -25,9 +25,10 @@ cell_t *get_end_cell(cell_t **cells)
 }
 
 /*!
- *
- * @param cells
- * @return
+ * check if the number of robot in the end cell is equal to the number total
+ * of number to see if this is the end of the program
+ * @param cells: table of cell structure
+ * @return either 1 if end or 0 if not
 */
 _Bool is_end(cell_t **cells)
 {
